@@ -12,6 +12,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 using System.Collections;
+using IBM.Watson.DeveloperCloud.Services.SpeechToText.v1;
 
 [Serializable] public class AudioPlayerEvent : UnityEvent { }
 [Serializable] public class AudioPlayerBoolEvent : UnityEvent<bool> { }
@@ -44,8 +45,10 @@ public class AudioPlayer : MonoBehaviour
         StopPlaying();
 		SavWav.Save ("speech", clip);
         _coroutinePlayback = StartCoroutine(Playing(clip));
-        if (OnPlaybackStart != null)
-            OnPlaybackStart.Invoke();
+		if (OnPlaybackStart != null) {
+			OnPlaybackStart.Invoke();
+		}
+			
         return true;
     }
 
