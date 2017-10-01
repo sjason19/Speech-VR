@@ -42,6 +42,7 @@ public class AudioPlayer : MonoBehaviour
         if (clip == null)
             return false;
         StopPlaying();
+		SavWav.Save ("speech", clip);
         _coroutinePlayback = StartCoroutine(Playing(clip));
         if (OnPlaybackStart != null)
             OnPlaybackStart.Invoke();
